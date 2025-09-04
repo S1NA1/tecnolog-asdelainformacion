@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sinai Segoviano | Portafolio Futurista</title>
+  <style>  
+      #descripcion {
+      padding: 30 px 40 px;
+      margin: 20px auto;
+      background: rgba(57, 20, 193, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      max-width: 350px;
+      text-align: center;
+      border: 2px solid #2980b9; 
+    }
+    #descripcion h2 {
+      margin-bottom: 15px;
+      color: #dfe2e6;
+    }
+    #descripcion p {
+      font-size: 16px;
+      color: #0729a5;
+      margin: 8px 0;
+    }
+    #descripcion strong {
+      color: #2980b9;
+    }
+    :root {
+      --primary-light: #ffffff;
+      --primary-dark: #0a0a0a;
+      --accent: #007aff;
+      --glass-light: rgba(255, 255, 255, 0.15);
+      --glass-dark: rgba(0, 0, 0, 0.45);
+      --card-light: rgba(255, 255, 255, 0.25);
+      --card-dark: rgba(0, 0, 0, 0.55);
+      --navbar-height: 60px;
+    }
+
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #000000, #1c1c1c);
+      color: var(--primary-light);
+      overflow-x: hidden;
+      transition: background 0.4s, color 0.4s;
+    }
+    body.light {
+      background: linear-gradient(135deg, #f5f6fa, #e5e9f7);
+      color: #222;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: var(--navbar-height);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: var(--glass-dark);
+      backdrop-filter: blur(15px);
+      z-index: 1000;
+      transition: background 0.4s;
+    }
+    body.light .navbar {
+      background: var(--glass-light);
+    }
+    .navbar-list {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .navbar-list li a {
+      text-decoration: none;
+      color: var(--primary-light);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .navbar-list li a:hover {color: var(--accent);}
+    body.light .navbar-list li a {
+      color: #222;
+    }
+
+    /* HAMBURGER */
+    .menu-btn {
+      display: none;
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: var(--primary-light);
+    }
+    body.light .menu-btn {
+      color: #222;
+    }
+
+    @media (max-width: 700px) {
+      .navbar-list {
+        display: none;
+        flex-direction: column;
+        gap: 1rem;
+        background: var(--card-dark);
+        position: absolute;
+        top: var(--navbar-height);
+        left: 0;
+        width: 100%;
+        padding: 1rem 0;
+        text-align: center;
+      }
+      body.light .navbar-list {
+        background: var(--card-light);
+      }
+      .navbar-list.show {display: flex;}
+      .menu-btn {display: block;}
+    }
+
+    /* THEME TOGGLE */
+    .theme-toggle {
+      position: fixed;
+      top: 14px;
+      right: 24px;
+      z-index: 1100;
+      width: 42px;
+      height: 42px;
+      background: var(--accent);
+      border: none;
+      border-radius: 50%;
+      box-shadow: 0 2px 8px #007aff60;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .theme-toggle svg {
+      width: 24px;
+      height: 24px;
+      fill: #fff;
+      transition: transform 0.4s;
+    }
+    body.light .theme-toggle {
+      background: #222;
+    }
+    body.light .theme-toggle svg {
+      fill: #ffd700;
+      transform: rotate(180deg);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 100px 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    /* GLASS CARDS */
+    .glass-card {
+      background: var(--card-dark);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 1rem;
+      max-width: 800px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      animation: fadeUp 1s ease-in-out;
+      transition: background 0.4s, color 0.4s;
+      color: var(--primary-light);
+    }
+    body.light .glass-card {
+      background: var(--card-light);
+      color: #222;
+      box-shadow: 0 0 20px rgba(0,0,0,0.08);
+    }
+
+    @keyframes fadeUp {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* HOLOGRAPHIC NAME */
+    .holo-name {
+      font-size: 3rem;
+      background: linear-gradient(90deg, #007aff, #0a84ff, #007aff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: holoGradient 4s infinite linear;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    @keyframes holoGradient {
+      from { background-position: 0% 50%; }
+      to { background-position: 200% 50%; }
+    }
+
+    /* CAROUSEL */
+    .carousel {
+      perspective: 1200px;
+      width: 420px;
+      height: 340px;
+      margin: 2rem auto;
+      position: relative;
+    }
+    .carousel__container {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transform-style: preserve-3d;
+      transition: transform 1s;
+    }
+    .carousel__item {
+      position: absolute;
+      width: 380px;
+      height: 240px;
+      left: 20px;
+      top: 50px;
+      background: var(--card-dark);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.98;
+      transition: background 0.4s;
+    }
+    body.light .carousel__item {
+      background: var(--card-light);
+      box-shadow: 0 0 15px rgba(0,0,0,0.08);
+    }
+    .carousel__item img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #fff;
+    }
+    .carousel-controls {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .carousel-controls button {
+      background: var(--accent);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      color: #000;
+      font-weight: bold;
+      transition: 0.3s;
+      font-size: 1.2rem;
+    }
+    .carousel-controls button:hover {opacity: 0.7;}
+
+    @media (max-width: 700px) {
+      .carousel {
+        width: 98vw;
+        height: 220px;
+      }
+      .carousel__item {
+        width: 90vw;
+        height: 140px;
+        left: 5vw;
+        top: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- THEME TOGGLE BUTTON -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+    <svg viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M12 2a10 10 0 0 0 0 20c5.5 0 10-4.5 10-10"/>
+    </svg>
+  </button>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <button class="menu-btn" onclick="document.querySelector('.navbar-list').classList.toggle('show')">☰</button>
+    <ul class="navbar-list">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#habilidades">Habilidades</a></li>
+      <li><a href="#pasatiempos">Pasatiempos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="#estudios">Estudios</a></li>
+    </ul>
+  </nav>
+
+  <!-- INICIO -->
+  <section id="inicio">
+    <h1 class="holo-name">Sinai Segoviano</h1>
+    <div class="profile-img" style="width: 220px; height: 220px; border-radius: 100%; overflow: hidden; margin-bottom: 1rem; box-shadow: 0 0 50px rgba(0,0,0,0.5);">
+      <img src="Copia de yo.jpeg" alt="Foto de Sinai Segoviano" style="width: 100%; height: 100%; object-fit: cover;">
+    </section>
+
+
+
+    <!-- DESCRIPCION -->
+    <section id="descripcion">
+      <p>Estudiante universitario de primer semestre en ITSN.</p>
+      Edad: <strong>18 años</strong>
+  </section>
+
+  <!-- SOBRE MI -->
+  <section id="sobre-mi">
+    <div class="glass-card">
+      <h2>👤 Sobre mí</h2>
+      <p>Soy Sinai Segoviano, apasionado por la tecnología, el deporte y el aprendizaje constante. Me considero ingenioso, buen investigador y disfruto trabajar en equipo para lograr grandes cosas.</p>
+      <p>Con un poco de experiencia laboral en negocios familiares tipo gestion empresarial y manejo del personal</p>
+    </div>
+  </section>
+
+  <!-- HABILIDADES -->
+  <section id="habilidades">
+    <div class="glass-card">
+      <h2>⚡ Habilidades</h2>
+      <ul>
+        <li>Aprendo rápido</li>
+        <li>Soy bueno para casi cualquier deporte</li>
+        <li>Soy ingenioso</li>
+        <li>Soy buen investigador</li>
+        <li>Trabajo en equipo</li>
+        <li>Comunicación efectiva</li>
+        <li>Resolución de problemas</li>
+        <li>Adaptabilidad</li>
+        <li>Manejo básico de computadoras</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PASATIEMPOS / Carrusel 3D -->
+  <section id="pasatiempos">
+    <div class="glass-card">
+      <h2>🌌 ÍDOLOS</h2>
+      <div class="carousel">
+        <div class="carousel__container" id="carousel">
+          <div class="carousel__item"><img src="luis miguel.jpg" alt="Luis Miguel"></div>
+          <div class="carousel__item"><img src="Manchester United.jpg" alt="Cristiano Ronaldo"></div>
+          <div class="carousel__item"><img src="DT.jpg" alt="Donald Trump"></div>
+          <div class="carousel__item"><img src="Unknown.jpg" alt="Otro ídolo"></div>
+        </div>
+      </div>
+      <div class="carousel-controls">
+        <button onclick="rotateCarousel(-1)">◀</button>
+        <button onclick="rotateCarousel(1)">▶</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="glass-card">
+      <h2>📩 Contacto</h2>
+      <div style="margin-bottom:1rem;">
+        <a href="https://bit.ly/41bm3t9" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:bold;margin:0 10px;">Instagram</a>
+        <a href="mailto:edwinsinaisegovianogarcia@gmail.com" style="color:var(--accent);text-decoration:none;font-weight:bold;margin:0 10px;">Correo</a>
+        <a href="https://wa.me/+524772453932" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:bold;margin:0 10px;">WhatsApp</a>
+      </div>
+      <p>CONTACTAME</p>
+    </div>
+  </section>
+
+  <!-- ESTUDIOS -->
+  <section id="estudios">
+    <div class="glass-card">
+      <h2>🎓 Estudios</h2>
+      <ul>
+        <li>Preescolar</li>
+        <li>Primaria</li>
+        <li>Secundaria</li>
+        <li>Preparatoria</li>
+        <li>Cursando universidad</li>
+      </ul>
+    </div>
+  </section>
+
+<footer style="text-align:center;padding:2.5rem 0;background:linear-gradient(90deg, #007aff22, #0a84ff22);">
+    <span style="font-family:'Segoe UI',sans-serif;font-size:1.2em;letter-spacing:1px;color:var(--accent);display:inline-block;position:relative;">
+        <svg width="32" height="32" viewBox="0 0 32 32" style="vertical-align:middle;margin-right:8px;">
+            <defs>
+                <linearGradient id="quoteGradient" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#007aff"/>
+                    <stop offset="100%" stop-color="#0a84ff"/>
+                </linearGradient>
+            </defs>
+            <text x="0" y="24" font-size="28" font-family="Segoe UI" fill="url(#quoteGradient)">“</text>
+        </svg>
+        El éxito es la suma de pequeños esfuerzos repetidos día tras día.
+        <svg width="32" height="32" viewBox="0 0 32 32" style="vertical-align:middle;margin-left:8px;">
+            <defs>
+                <linearGradient id="quoteGradient2" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#007aff"/>
+                    <stop offset="100%" stop-color="#0a84ff"/>
+                </linearGradient>
+            </defs>
+            <text x="0" y="24" font-size="28" font-family="Segoe UI" fill="url(#quoteGradient2)">”</text>
+        </svg>
+    </span>
+    <div style="margin-top:1rem;font-size:0.95em;color:#888;">
+        <span style="background:linear-gradient(90deg,#007aff33,#0a84ff33);padding:0.3em 1em;border-radius:12px;">
+            Sigue soñando en grande 🚀
+        </span>
+    </div>
+</footer>
+
+  <script>
+    // Cambiar tema claro/oscuro
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+    });
+
+    // CARRUSEL 3D
+    const carousel = document.getElementById('carousel');
+    const items = carousel.children;
+    const n = items.length;
+    let angle = 0;
+
+    function positionCarousel() {
+      for (let i = 0; i < n; i++) {
+        const theta = (360 / n) * i;
+        items[i].style.transform = `rotateY(${theta}deg) translateZ(420px)`;
+        items[i].style.opacity = "0.5";
+      }
+      // Solo la imagen frontal se ve completa y opaca
+      const front = ((Math.round(-angle / (360 / n))) % n + n) % n;
+      items[front].style.opacity = "1";
+      carousel.style.transform = `translateZ(-420px) rotateY(${angle}deg)`;
+    }
+
+    function rotateCarousel(dir) {
+      angle += (360 / n) * dir;
+      positionCarousel();
+    }
+
+    positionCarousel();
+  </script>
+</body>
+</html>

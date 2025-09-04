@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currículum Vitae - Nivel Dios Programador</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+
+      font-family: 'Segoe UI', sans-serif;
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* Fondo con animación Matrix */
+    canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: #000;
+    }
+
+    .container {
+      display: flex;
+      max-width: 1100px;
+      margin: 40px auto;
+      border-radius: 20px;
+      overflow: hidden;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 40px rgba(0,255,200,0.5);
+    }
+
+    .sidebar {
+      width: 30%;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 30px 20px;
+      text-align: center;
+      border-right: 2px solid rgba(0,255,200,0.5);
+    }
+
+    /* Foto con aura holograma */
+    .sidebar img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      border: 4px solid #00ffc6;
+      box-shadow: 0 0 25px #00ffc6, 0 0 50px #0077ff, inset 0 0 20px #00ff99;
+      animation: holoGlow 3s infinite alternate;
+    }
+    @keyframes holoGlow {
+      0% { box-shadow: 0 0 25px #00ffc6, 0 0 50px #0077ff, inset 0 0 20px #00ff99; }
+      50% { box-shadow: 0 0 35px #ff00c8, 0 0 70px #ffcc00, inset 0 0 25px #ff0077; }
+      100% { box-shadow: 0 0 25px #00ff99, 0 0 50px #00ffc6, inset 0 0 30px #0072ff; }
+    }
+
+    .sidebar h2 { font-size: 22px; margin: 10px 0; }
+    .sidebar p { font-size: 14px; margin: 6px 0; }
+
+    .buttons {
+      margin-top: 20px;
+    }
+    .buttons a {
+      display: block;
+      margin: 8px 0;
+      padding: 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      background: linear-gradient(90deg,#00ffc6,#0077ff);
+      color: #000;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .buttons a:hover {
+      transform: scale(1.1);
+      background: linear-gradient(90deg,#ff0077,#ffcc00);
+      color: #fff;
+    }
+
+    .main-content {
+      width: 70%;
+      padding: 30px;
+      background: rgba(0,0,0,0.7);
+    }
+
+    .section {
+      margin-bottom: 25px;
+      padding: 20px;
+      border-radius: 12px;
+      background: rgba(0,255,200,0.05);
+      border-left: 3px solid #00ffc6;
+      transition: 0.4s;
+      animation: fadeUp 1.5s ease;
+    }
+    .section:hover {
+      transform: translateY(-5px);
+      background: rgba(0,255,200,0.1);
+      box-shadow: 0 0 20px rgba(0,255,200,0.5);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      color: #00ffc6;
+    }
+    ul { padding-left: 20px; }
+    li { margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+p>Imagen AVIF</p>
+    <img src="sinai.avif" alt="Foto de perfil AVIF" width="200">
+
+    <p>Imagen JPG</p>
+    <img src="sinai.jpg" alt="Foto de perfil JPG" width="200">
+
+    <p>Imagen JPG blanco y negro</p>
+    <img src="sinai-2.jpg" alt="Foto de perfil JPG a 600px" width="">
+
+    <p>Imagen png</p>
+    <img src="sinai.png" alt="Foto de perfil PNG" width="200">
+
+    <p>Imagen webp</p>
+    <img src="CS.webp" alt="Foto de perfil webp" width="200">
+
+
+
+
+
+
+
+
+  <p>Imagen AVIF</p>
+    <img src="capitan-america.avif" alt="Foto de perfil AVIF" width="200">
+
+    <p>Imagen JPG</p>
+    <img src="capitan-america.jpg" alt="Foto de perfil JPG" width="200">
+
+    <p>Imagen JPG blanco y negro</p>
+    <img src="Copia de capitan-america.jpg" alt="Foto de perfil JPG a 600px" width="">
+
+    <p>Imagen png</p>
+    <img src="capitan-america.png" alt="Foto de perfil PNG" width="200">
+
+    <p>Imagen webp</p>
+    <img src="CP.webp" alt="Foto de perfil webp" width="200">
+
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <img src="capitan-america.jpg" alt="Foto de perfil">
+      <h2>Edwin Sinai Segoviano</h2>
+      <p>👨‍💻 Programador Nivel Dios</p>
+      <p>🎓 La Salle - Ingeniería en Tecnologías y Soluciones de Negocios</p>
+      <p>📍 México</p>
+      <p>📧 edwinsinaisegovianogonzalez@gmail.com</p>
+      <p>📱 +52 123 456 7890</p>
+
+      <div class="buttons">
+        <a href="#">⬇️ Descargar CV</a>
+        <a href="#">💼 LinkedIn</a>
+        <a href="#">🐙 GitHub</a>
+        <a href="#">🌐 Portafolio</a>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="section">
+        <h3>Perfil</h3>
+        <p>
+          Con más de 100 años de experiencia programando en todas las dimensiones posibles 🤯. 
+          Experto en desarrollo full-stack, inteligencia artificial, ciberseguridad, blockchains interplanetarias 
+          y cafés bien cargados ☕. Capaz de compilar código con solo pensarlo.
+        </p>
+      </div>
+
+      <div class="section">
+        <h3>Habilidades Legendarias</h3>
+        <ul>
+          <li>Dominio de 999+ lenguajes de programación</li>
+          <li>Optimización de algoritmos a velocidad cuántica</li>
+          <li>Experto en ciberseguridad nivel Matrix</li>
+          <li>Desarrollo de IA con conciencia propia (y que hace tacos 🌮)</li>
+          <li>Hacker ético intergaláctico</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>Proyectos Épicos</h3>
+        <ul>
+          <li>🚀 Sistema operativo para colonias en Marte</li>
+          <li>🧠 Red neuronal que predice el futuro del fútbol</li>
+          <li>🌐 Internet 4.0 interplanetario</li>
+          <li>🎮 Videojuego con gráficos que superan la realidad</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>Idiomas</h3>
+        <ul>
+          <li>Español: Nativo</li>
+          <li>Inglés: Avanzado</li>
+          <li>C++ binario: Fluido</li>
+          <li>Idioma de las máquinas: Nativo</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script para animación Matrix -->
+  <script>
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    const letters = "01";
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+
+    const drops = Array(Math.floor(columns)).fill(1);
+
+    function draw() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#00ffc6";
+      ctx.font = fontSize + "px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    setInterval(draw, 33);
+  </script>
+</body>
+</html>
