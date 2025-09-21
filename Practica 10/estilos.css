@@ -1,0 +1,79 @@
+:root {
+   --color1: pink;
+   --color2: red;
+   --color3: coral;
+   --color4: green;
+   --color5: darkred;
+   --color6: deeppink;
+   --fuente: 'Arial', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--fuente);
+}
+
+body {
+    background: #f4f4f9;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #333;
+}
+
+/* Contenedor */
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+/* Items */
+.item {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.item img {
+    width: 100%;
+    display: block;
+    border-radius: 12px;
+    transition: transform 0.5s ease;
+}
+
+.item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.item:hover img {
+    transform: scale(1.1);
+}
+
+/* Colores por cada imagen */
+.color1 { background-color: var(--color1); }
+.color2 { background-color: var(--color2); }
+.color3 { background-color: var(--color3); }
+.color4 { background-color: var(--color4); }
+.color5 { background-color: var(--color5); }
+.color6 { background-color: var(--color6); }
+
+/* Zig-zag: orden dinámico dos en dos */
+.item:nth-child(2n) {
+    grid-column: span 2;
+}
+
+.item:nth-child(2n+1) {
+    grid-row: span 2;
+}
