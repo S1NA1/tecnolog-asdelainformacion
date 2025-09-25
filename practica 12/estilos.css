@@ -1,0 +1,62 @@
+body {
+
+    background-color: blue;
+    color: aliceblue;
+    font-family: 'Courier New', Courier, monospace;
+ margin: auto;
+ padding: 0%;
+ font-size: 20px;
+ 
+
+}
+
+h1 {
+
+    text-align: center;
+    margin-top: 20px;
+    font-size:  3em;
+
+}
+
+a {
+    color: aliceblue;
+    font-size: 30px;
+    text-decoration: dashed;
+    text-align: center;
+   display: block;
+   margin: 40px auto;
+padding: 20px;
+
+}
+
+a:hover {
+    background-color: rgb(19, 159, 40);
+    color: black;
+
+}
+
+
+#padre{
+
+font-size: 20px;
+
+}
+
+h2 {
+
+font-size: 4em;
+
+}
+
+h3{
+
+    font-size: 5em;
+}
+
+li {
+
+    font-size:  3rem;
+}
+
+
+
