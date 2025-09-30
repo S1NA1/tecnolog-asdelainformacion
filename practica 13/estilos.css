@@ -1,0 +1,27 @@
+body {
+
+
+    background-color: rgb(20, 104, 159);
+    color: black;
+    margin: 0px;
+    padding: 0px;
+    font-family: "Bitcount Prop Single Ink", system-ui;
+    text-align: center;
+
+}
+
+
+#encabezado {
+
+
+   background-color: rgb(197, 200, 23);
+   border: 10px;
+   width: 80%;
+   margin: auto;
+   box-shadow: 22px 19px 13px -4px rgba(0,0,0,0.75);
+-webkit-box-shadow: 22px 19px 13px -4px rgba(0,0,0,0.75);
+-moz-box-shadow: 22px 19px 13px -4px rgba(0,0,0,0.75);
+
+
+}
+
