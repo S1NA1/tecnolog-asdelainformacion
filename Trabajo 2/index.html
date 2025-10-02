@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Frutería Segoviano - Sistema de Nómina</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('Copia de alimentos-de-fondo-frutas-y-verduras-colección-retrato-formato-dieta-saludable-manzanas-naranjas-tomates-retratos-190446153.webp') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+    }
+
+    header {
+      background: rgba(0, 128, 0, 0.8);
+      padding: 20px;
+      text-align: center;
+      color: white;
+      font-size: 26px;
+      font-weight: bold;
+      position: relative;
+    }
+
+    header img {
+      width: 120px;
+      max-width: 20%;
+      height: auto;
+      position: absolute;
+      top: 10px;
+      left: 35px;
+      border-radius: 50%;
+      border: 3px solid white;
+    }
+
+    @media (max-width: 600px) {
+      header img {
+        width: 80px;
+        left: 15px;
+      }
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: darkgreen;
+    }
+
+    label {
+      display: block;
+      margin: 12px 0 6px;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 12px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background: green;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 8px 4px;
+    }
+
+    button:hover {
+      background: darkgreen;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 25px;
+      table-layout: fixed;
+      word-wrap: break-word;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background: #4CAF50;
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+      table, thead, tbody, th, td, tr { 
+        display: block; 
+      }
+      th { display: none; }
+      td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+        text-align: left;
+      }
+      td::before {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 45%;
+        white-space: nowrap;
+        font-weight: bold;
+      }
+      td:nth-of-type(1)::before { content: "Nombre"; }
+      td:nth-of-type(2)::before { content: "Sueldo Base"; }
+      td:nth-of-type(3)::before { content: "Bonos"; }
+      td:nth-of-type(4)::before { content: "Descuento"; }
+      td:nth-of-type(5)::before { content: "Concepto"; }
+      td:nth-of-type(6)::before { content: "Total a Pagar"; }
+      td:nth-of-type(7)::before { content: "Reporte"; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="Copia de PHOTO-2025-10-01-06-55-00.jpg" alt="Logo Frutería">
+    Frutería Segoviano - Sistema de Nómina
+  </header>
+
+  <div class="container">
+    <h2>Registro de Nómina</h2>
+    <form id="nominaForm">
+      <label for="nombre">Nombre del trabajador:</label>
+      <input type="text" id="nombre" placeholder="Ejemplo: Juan Pérez" required>
+
+      <label for="sueldo">Sueldo base semanal:</label>
+      <input type="number" id="sueldo" placeholder="Ejemplo: 1500" required>
+
+      <label for="bonos">Bonos extra (ej. horas extra, puntualidad):</label>
+      <input type="number" id="bonos" placeholder="Ejemplo: 200">
+
+      <label for="descConcepto">Concepto del descuento (ej. préstamo, faltante, vale):</label>
+      <input type="text" id="descConcepto" placeholder="Ejemplo: Préstamo personal">
+
+      <label for="descuentos">Monto del descuento:</label>
+      <input type="number" id="descuentos" placeholder="Ejemplo: 300">
+      
+      <button type="submit">Agregar a Nómina</button>
+    </form>
+
+    <table id="tablaNomina">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Sueldo Base</th>
+          <th>Bonos</th>
+          <th>Descuento</th>
+          <th>Concepto</th>
+          <th>Total a Pagar</th>
+          <th>Reporte</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <button onclick="descargarGeneral()">📥 Descargar Reporte General</button>
+  </div>
+
+  <script>
+    let registros = [];
+
+    document.getElementById("nominaForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      
+      let nombre = document.getElementById("nombre").value;
+      let sueldo = parseFloat(document.getElementById("sueldo").value) || 0;
+      let bonos = parseFloat(document.getElementById("bonos").value) || 0;
+      let descConcepto = document.getElementById("descConcepto").value || "N/A";
+      let descuentos = parseFloat(document.getElementById("descuentos").value) || 0;
+
+      let total = sueldo + bonos - descuentos;
+
+      let registro = {nombre, sueldo, bonos, descuentos, descConcepto, total};
+      registros.push(registro);
+
+      actualizarTabla();
+      this.reset();
+    });
+
+    function actualizarTabla(){
+      let tbody = document.querySelector("#tablaNomina tbody");
+      tbody.innerHTML = "";
+      registros.forEach((r, i) => {
+        let fila = `<tr>
+          <td>${r.nombre}</td>
+          <td>$${r.sueldo}</td>
+          <td>$${r.bonos}</td>
+          <td>$${r.descuentos}</td>
+          <td>${r.descConcepto}</td>
+          <td><b>$${r.total}</b></td>
+          <td><button onclick="descargarIndividual(${i})">📥 Individual</button></td>
+        </tr>`;
+        tbody.innerHTML += fila;
+      });
+    }
+
+    function descargarGeneral(){
+      let csv = "Nombre,Sueldo Base,Bonos,Descuento,Concepto,Total a Pagar\n";
+      registros.forEach(r => {
+        csv += `${r.nombre},${r.sueldo},${r.bonos},${r.descuentos},${r.descConcepto},${r.total}\n`;
+      });
+      descargarArchivo(csv, "nomina_general.csv");
+    }
+
+    function descargarIndividual(indice){
+      let r = registros[indice];
+      let csv = "Nombre,Sueldo Base,Bonos,Descuento,Concepto,Total a Pagar\n";
+      csv += `${r.nombre},${r.sueldo},${r.bonos},${r.descuentos},${r.descConcepto},${r.total}\n`;
+      descargarArchivo(csv, `nomina_${r.nombre}.csv`);
+    }
+
+    function descargarArchivo(contenido, nombreArchivo){
+      let blob = new Blob([contenido], {type: "text/csv;charset=utf-8;"});
+      let link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = nombreArchivo;
+      link.click();
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
